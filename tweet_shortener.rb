@@ -1,4 +1,5 @@
 # Write your code here.
+require 'pry'
 
 def dictionary
   dict = {
@@ -9,7 +10,8 @@ def dictionary
     "be" => "b",
     "you" => "u",
     "at" => "@",
-    "and" => "@"
+    "and" => "&",
+    "for" => "4"
   }
 end
 
@@ -18,14 +20,39 @@ def word_substituter(tweet_one)
   tempArray = []
   tweetArray = tweet_one.split(" ")
   tweetArray.each {|word| 
+    addingWord = word
     dictionary.each {|key, value|
-      if word == value
-       word = key
-       tempArray << word
+    #puts "key= #{key} word= #{word} value= #{value}"
+      if word.downcase == key
+       addingWord = value
       end
-       tempArray << word
-    
     }
-    returnTweet = tempArray.join(" ")
+    tempArray << addingWord
   }
+  returnTweet = tempArray.join(" ")
 end
+
+def selective_tweet_shortener(tweet_one)
+  if tweet_one.length > 140
+    return word_substituter(tweet_one)
+  else
+    return tweet_one
+  end
+end
+
+def bulk_tweet_shortener(tweetArray)
+  tweetArray.each {|tweet| puts word_substituter(tweet)}
+end
+
+def shortened_tweet_truncator(tweet)
+  
+truncated_tweet = ""
+  if word_substituter(tweet).length > 140
+     truncated_tweet << word_substituter(tweet)[0..136] + "..."
+   else
+     truncated_tweet << word_substituter(tweet)
+  end
+ truncated_tweet
+end
+
+shortened_tweet_truncator("GUISEEEEE this is so fun! I'm tweeting 4 u guys & this tweet is SOOOO long it's gonna b way more than u would think twitter can handle, so shorten it up u know what I mean? I just can never tell how long 2 keep typing!")
