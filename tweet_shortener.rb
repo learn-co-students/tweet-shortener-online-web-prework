@@ -21,6 +21,7 @@ def word_substituter(tweet_one)
     dictionary.each {|key, value|
       if word == value
        word = key
+       tempArray << word
       end
        tempArray << word
     
