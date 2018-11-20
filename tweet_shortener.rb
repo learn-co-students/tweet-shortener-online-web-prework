@@ -1,3 +1,5 @@
+require 'pry'
+
 def dictionary
   short = {
     "hello" => "hi",
@@ -15,5 +17,9 @@ end
 
 def word_substituter(tweet)
   array = tweet.split(" ")
+  array.each do |word|
+    if word == dictionary.keys.any?
 
 end
+
+#binding.pry
