@@ -1,6 +1,10 @@
+
 require 'pry'# Write your code here.
 def dictionary #(hashs)
-hashs = { "hello" => "hi","to two too" => "2","for four" => "4",
+hashs = { "hello" => "hi","to"=> "2",
+"two"=> "2",
+"too" => "2",
+"for four" => "4",
 "be" => "b",
 "you"=> "u",
 "at" => "@",
@@ -9,12 +13,14 @@ hashs = { "hello" => "hi","to two too" => "2","for four" => "4",
 end
 
 def  word_substituter (string)
-  words=dictionary.keys.join("  ")
-binding.pry
+  words=dictionary.keys
+arraytw =string.split(" ")
 
-  string.split.each do |change |
-  change.include?(words)
-#binding.pry
+#if words.include?(string) == true
+arraytw.each do  |word|
+   words.include?(word)
+  word.gsub(dictionary)
+# delete_if  iclude?() .select
 
 end
 end
