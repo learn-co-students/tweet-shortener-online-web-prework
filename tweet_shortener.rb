@@ -19,15 +19,18 @@ end
   
 def word_substituter(tweet_one)
   dictionary
-  tweet_array = []
-  tweet_one.each do |tweet| tweet_array << tweet.split(" ") end 
-  #would tweet.split("").map create a new array named tweet which could #then be operated on on the next line?
-  tweet_array.each do 
-  if tweet_array.include?(dictionary.keys) 
-    tweet_array.each |word| word.replace dictionary.value end 
-    
-  # if dictionary.keys.include?(tweet_array)
-  #   tweet_array.each |word| word.replace(dictionary.value) end 
-
+  tweet_one.split(" ").map do |y|
+    if dictionary.keys.include?(y)
+    y = dictionary[y]
+    else 
+      y  
+    end 
+   end.join(" ")
+end 
   
-    
+def bulk_tweet_shortener(tweets)
+  puts word_substituter(tweets)
+end
+  
+  
+  
