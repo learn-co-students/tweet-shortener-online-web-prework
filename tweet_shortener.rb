@@ -35,10 +35,17 @@ end
   #if the tweet is > 140 char then substitute, else leave alone.
   
 def selective_tweet_shortener(tweet)
-  if tweet.length <=140 
+  if tweet.length <=140 || tweet == nil 
   tweet
   else word_substituter(tweet)
   end 
 end 
-  
-  
+
+def shortened_tweet_truncator(tweet)
+  selective_tweet_shortener(tweet)
+  if tweet.length >= 140
+    long_tweet = tweet[0,137]
+    long_tweet.ljust(140, "...")
+  else tweet 
+  end 
+end 
