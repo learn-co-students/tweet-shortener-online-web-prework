@@ -20,8 +20,8 @@ end
 def word_substituter(tweet_one)
   dictionary
   tweet_one.split(" ").map do |y|
-    if dictionary.keys.include?(y)
-    y = dictionary[y]
+    if dictionary.keys.include?(y.downcase)
+    y = dictionary[y.downcase]
     else 
       y  
     end 
@@ -31,6 +31,5 @@ end
 def bulk_tweet_shortener(tweets)
   puts word_substituter(tweets)
 end
-  
   
   
