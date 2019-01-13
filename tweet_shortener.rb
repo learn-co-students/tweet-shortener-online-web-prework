@@ -17,14 +17,16 @@ tweet_one = "Hey guys, can anyone teach me how to be cool? I really want to be t
 #  tweet_three: "I'm running out of example tweets for you guys, which is weird, because I'm a writer and this is just writing and I tweet all day. For real, you guys. For real.",
 #  tweet_four: "GUISEEEEE this is so fun! I'm tweeting for you guys and this tweet is SOOOO long it's gonna be way more than you would think twitter can handle, so shorten it up you know what I mean? I just can never tell how long to keep typing!",
 #  tweet_five: "New game. Middle aged tweet followed by #youngPeopleHashTag Example: Gotta get my colonoscopy and mammogram soon. Prevention is key! #swag"
-}
-def word_substituter (tweet_one)
-  tweet_array = tweet_one.to_a
+#}
+def word_substituter (tweet_one, dictionary)
+  tweet_array = tweet_one.split(" ")
+
   tweet_array.map do |word|
-    word == "hello"
+    if word == "Hey"
       "hi"
     else
       word
     end
   end
+
 end
