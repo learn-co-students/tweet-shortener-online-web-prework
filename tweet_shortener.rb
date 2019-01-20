@@ -32,11 +32,10 @@ end
 
 def word_substituter(string_in)
   string_ary = string_in.split(" ")
-  new_sentence = []
   dictionary.each do |key, value|
     string_ary.each do |index|
-      index == index.capitalize ? index = index.downcase : index
-      if index.downcase == key
+      if dictionary.keys.include? (index.downcase)
+        if index == key
         index.gsub!(key, value)
       end
     end
