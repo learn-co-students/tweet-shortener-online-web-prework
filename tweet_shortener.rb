@@ -29,19 +29,6 @@ def word_substituter(string_in)
 end
 
 
-# def word_substituter(string_in)
-#   string_ary = string_in.split(" ")
-#   string_ary.each do |index|
-#     if dictionary.keys.include? (index.downcase)
-#       dictionary.each do |key, value|
-#         if index.downcase == key
-#           index.gsub!(index, value)
-#         end
-#       end
-#     end
-#   end
-#   string_in = string_ary.join(" ")
-# end
 
 
 def bulk_tweet_shortener(tweets)
@@ -50,5 +37,15 @@ end
 
 
 def selective_tweet_shortener(tweet)
-binding.pry
+  if tweet.size > 140
+    tweet.slice!(0..139)
+  else
+    tweet
+  end
+end
+
+
+def shortened_tweet_truncator(tweet)
+  word_substituter(tweet)
+  selective_tweet_shortener(tweet)
 end
