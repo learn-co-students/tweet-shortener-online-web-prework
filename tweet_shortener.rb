@@ -19,7 +19,7 @@ def word_substituter(tweet)
   #binding.pry
     if dictionary[word] == word 
        dictionary[word]
-    else nil
+   # else nil
     end
   end
 end
