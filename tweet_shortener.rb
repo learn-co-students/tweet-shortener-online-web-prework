@@ -2,8 +2,11 @@
 require 'pry'
 def dictionary
 {"hello" => 'hi',
-"to, two, too" => '2', 
-"for, four" => '4',
+"to"  => '2', 
+"two" => '2', 
+"too" => '2', 
+"for" => '4', 
+"four" => '4',
 'be' => 'b',
 'you' => 'u',
 "at" => "@", 
@@ -11,15 +14,14 @@ def dictionary
 end
 
 def word_substituter(tweet)
-  binding.pry
   tweet_array = tweet.split  
   tweet_array.map do |word|
+  #binding.pry
     if dictionary[word] == word 
-    dictionary[word]
-    else
-    
-    end.to_s
-  
+       dictionary[word]
+    else nil
+    end
+  end
 end
 
 #def bulk_tweet_shortener(tweets_array)
