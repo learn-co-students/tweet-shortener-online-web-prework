@@ -45,7 +45,8 @@ end
 
 def shortened_tweet_truncator(tweet)
    better_tweets =  selective_tweet_shortener(tweet)
-  if selective_tweet_shortener(tweet).length > 137 
+  if selective_tweet_shortener(tweet).length > 140
+    selective_tweet_shortener(tweet)[0...137] + "..."
       #binding.pry
   else 
     tweet
