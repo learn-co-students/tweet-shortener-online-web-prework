@@ -19,7 +19,7 @@ def word_substituter(tweet)
   
   compare_tweet = tweet.split
   
-    compare_tweet.each_with_index do |word, index|
+  compare_tweet.each_with_index do |word, index|
       
       if dictionary.keys.include?(word) == compare_tweet(word.downcase)
         
@@ -32,7 +32,7 @@ def word_substituter(tweet)
       end 
       
     end 
-    
+  compare_tweet.join("")  
 end 
   
   
