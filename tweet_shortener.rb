@@ -19,9 +19,11 @@ def word_substituter(tweet)
   
   compare_tweet = tweet.split
   
-    compare_tweet.each do |word|
+    compare_tweet.each_with_index do |word, index|
       
-      if dictionary.keys.include?(word) == compare_tweet(word.downcase) 
+      if dictionary.keys.include?(word) == compare_tweet(word.downcase)
+        
+        compare_tweet[index].replace(word.downcase)
         
   binding.pry
 
