@@ -21,12 +21,12 @@ def word_substituter(tweet)
     
 #binding.pry
 
-    if dictionary.keys.include?(word) == compare_tweet(word.downcase)
-      compare_tweet[index].replace(word.downcase)
+    if dictionary.keys.include?(word.downcase)
+      compare_tweet[index] = dictionary[word.downcase]
     
     end 
   end 
-  compare_tweet.join("")  
+  compare_tweet.join(" ")  
 end 
   
   
