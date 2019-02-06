@@ -13,7 +13,8 @@ def dictionary
     "at" => '@',
     "and" => '&'
   }
-end 
+end
+
 
 def word_substituter(tweet)
   compare_tweet = tweet.split
@@ -28,7 +29,16 @@ end
   
 def bulk_tweet_shortener(tweets)
     tweets.each {|tweet| puts word_substituter(tweet)}
-end   
+end 
+
+
+def selective_tweet_shortener(tweet)
+  if tweet.length > 140      #? word_substituter(tweet) : tweet
+    word_substituter(tweet)
+  else 
+    tweet  
+  end    
+end  
     
     
   
