@@ -34,16 +34,15 @@ def bulk_tweet_shortener(bulk_tweets)
 end 
 
 def selective_tweet_shortener(tweet)
-    if tweet.split("").length > 140 
+    if tweet.length > 140 
       word_substituter(tweet)
     else tweet
     end 
 end
 
 def shortened_tweet_truncator(tweet)
-    over_limit = selective_tweet_shortener(tweet)
-    if over_limit.split("").length > 140
-      over_limit.split("")[0..136].join + "..."
+    if word_substituter(tweet).length > 140
+      word_substituter(tweet)[0..136] + "..."
     else tweet
     end
 end
