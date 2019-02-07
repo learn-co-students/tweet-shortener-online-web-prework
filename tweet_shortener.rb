@@ -8,8 +8,11 @@ require 'pry'
 def dictionary
   dictionary = {
     "hello" => "hi",
-    ["to", "two", "too"] => "2",
-    ["for", "four"] => "4",
+    "to" => "2",
+    "two" => "2",
+    "too" => "2",
+    "for" => "4",
+    "four" => "4",
     "be" => "b",
     "you" => "u",
     "at" => "@",
@@ -18,24 +21,39 @@ def dictionary
 end
 
 def word_substituter(tweet)
-  new_tweet = tweet.split(" ")# split the tweet into individual words
-  changed_tweet = []          # instantiate a new array `changed_tweet`
-  new_tweet.collect do |word| # for each tweet, the variable is `word`
-    dictionary.each do |key, value| # for the word, loop through dictionary
-      if key.include?(word)     # if the current dictionary key includes word
-        word = value            # assign the key's value to the word
+  new_tweet = tweet.split(" ")
+  changed_tweet = []
+  new_tweet.each do |word|
+    dictionary.each do |key, value|
+      if key == word || key.capitalize == word
+        word = value
       end
     end
-    changed_tweet << word     # enter word into the `changed_tweet` array
+    changed_tweet << word
   end
-
-  changed_tweet.join(" ")     # rejoin the changed_tweet arrays by spaces
+  changed_tweet.join(" ")
 end
 
-
-
 def bulk_tweet_shortener(tweets)
-  tweets.collect do |tweet|
+  tweets.each do |tweet|
     puts word_substituter(tweet)
   end
+end
+
+def selective_tweet_shortener(tweet)
+  if tweet.length > 140
+    word_substituter(tweet)
+  else
+    tweet
+  end
+end
+
+def shortened_tweet_truncator(tweet)
+  truncated_tweet = []
+  if tweet.length > 140
+    truncated_tweet = tweet[0..133]
+    truncated_tweet << " (...)"
+  else truncated_tweet = tweet
+  end
+  truncated_tweet
 end
