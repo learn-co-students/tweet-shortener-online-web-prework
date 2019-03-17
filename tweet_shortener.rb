@@ -17,7 +17,7 @@ def word_substituter(tweet)
   result = []
   wrking_grnd.collect do |wrd|
     if dictionary.has_key?(wrd.downcase)
-      nw_wrd = dictionary[wrd]
+      nw_wrd = dictionary[wrd.downcase]
       result +=[nw_wrd]
     else
       result +=[wrd]
@@ -26,9 +26,24 @@ def word_substituter(tweet)
    result.join(" ")
   end
 
-
 def bulk_tweet_shortener(array)
   array.each do |each_tweet|
     puts word_substituter(each_tweet)
   end
 end
+
+def selective_tweet_shortener(tweet)
+  if tweet.length >139
+      word_substituter(tweet)
+  else
+    tweet
+  end
+end
+
+def shortened_tweet_truncator(tweet)
+  if tweet.length >140
+    tweet[0...140]
+  else
+    tweet
+  end
+  end
