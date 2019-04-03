@@ -63,8 +63,9 @@ end
 
 # Truncate tweets over 140 characters
 def shortened_tweet_truncator(tweet)    
-  if tweet.length > 140 
-    tweet = tweet[0...137] + "..."
+  if word_substitutor(tweet).length > 140 
+    word_substitutor(tweet)[0...137] + "..."
+  else 
+    tweet
   end 
-  tweet
 end
