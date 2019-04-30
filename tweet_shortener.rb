@@ -1,5 +1,3 @@
-require "pry"
-
 def dictionary 
   shorten = {
     "hello" => "hi",
