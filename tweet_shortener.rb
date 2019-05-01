@@ -1,6 +1,6 @@
 # Write your code here.
 
-<<<<<<< HEAD
+
 def dictionary_hash
 dictionary = {
     Hello: "hi",
@@ -58,3 +58,4 @@ def shortened_tweet_truncator(tweet)
   else 
     tweet
   end 
+end 
