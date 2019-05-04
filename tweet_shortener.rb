@@ -1,38 +1,47 @@
-# regexp in case I need it again => (/[\s'.,?!:#]/)
-
 def dictionary
-  subst_dict = {
-    "hello" => 'hi', 
-    "to" => '2', 
-    "two" => '2', 
-    "too" => '2', 
-    "for" => '4', 
-    "four" => '4', 
-    "be" => 'b', 
-    "you" => 'u', 
-    "at" => '@', 
-    "and" => '&'
+  dictionary = {
+    "hello" => "hi",
+    "to" => "2",
+    "two" => "2",
+    "too" => "2",
+    "for" => "4",
+    "four" => "4",
+    "be" => "b",
+    "you" => "u",
+    "at" => "@",
+    "and" => "&"
   }
 end
 
 def word_substituter(tweet_string)
-  tweet_words = tweet_string.split
-  tweet_words.each_with_index do |word, index|
+  #split input string into array 
+  tweet_array = tweet_string.split
+  #iterate through array with_index to be able to target elements
+  tweet_array.each_with_index do |word, index|
+    #get array of keys from dictionary method
+    #& iterate through tweet_array to compare contents
     if dictionary.keys.include?(word.downcase)
-      tweet_words[index] = dictionary[word.downcase]
+      #if match found assign the element at that index 
+      #the value from dictionary for that word key
+      tweet_array[index] = dictionary[word.downcase]
     end
   end
-  tweet_words = tweet_words.join(" ")
-end
-    
-def bulk_tweet_shortener(tweet_array)
-  tweet_array.map do |tweet|
-  puts word_substituter(tweet)
+  tweet_array.join(" ")
+end  
+
+def bulk_tweet_shortener(array_tweets)
+  #iterate through array of tweets
+  array_tweets.each do |tweet|
+    #pass each tweet to word substituter 
+    #method to be shortened and printed
+    puts word_substituter(tweet)
   end
-end
+end  
 
 def selective_tweet_shortener(tweet)
+  #check if tweet length is 140 chars or more
   if tweet.length > 140
+      #if yes pass that tweet to word_substituter method
     word_substituter(tweet)
   else
     tweet
@@ -40,15 +49,10 @@ def selective_tweet_shortener(tweet)
 end
 
 def shortened_tweet_truncator(tweet)
-  if tweet.length > 140
-    shorter_tweet = selective_tweet_shortener(tweet)
-    if shorter_tweet.length > 140
-      shortest_tweet = shorter_tweet[0..136] + "..."
-    else
-      shorter_tweet
-    end
+  if selective_tweet_shortener(tweet).length > 140
+    tweet = tweet[0..136] + "..."
   else
     tweet
   end
 end
-    
+
