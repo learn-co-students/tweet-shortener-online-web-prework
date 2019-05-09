@@ -25,7 +25,7 @@ def word_substituter(tweet)
 end
 
 def bulk_tweet_shortener(tweet)
-  if tweet.map do |sentence|
+  if tweet.each do |sentence|
   puts word_substituter(sentence)
   end
   end
@@ -40,10 +40,9 @@ def selective_tweet_shortener(tweet)
 end
 
 def shortened_tweet_truncator(tweet)
-  tweet.split(" ").map do |new_sentence|
-    if new_sentence.length > 140
-      word_substituter(new_sentence)[0..140] + "..."
+    if word_substituter(tweet).length > 140
+      word_substituter(tweet)[0..136] + '...'
     else
-      new_sentence
-  end.join(" ")
+      tweet
+  end
 end
