@@ -1,4 +1,6 @@
 # Write your code here.
+require "pry"
+
 def dictionary
   words_to_be_substituted = {
     "hello" => "hi",
@@ -31,13 +33,21 @@ def bulk_tweet_shortener(tweet)
   end
 end
 
+
 def selective_tweet_shortener(tweet)
-  tweet.split(" ").collect do |array_tweet|
-    if array_tweet.length > 140
-      word_substituter(array_tweet)
-    elsif array_tweet.length <= 140
-      array_tweet
-    end
-  end
-end
+  if tweet.chars.length > 140  
+    word_substituter(tweet)
+  else 
+    tweet 
+  end 
+end 
      
+
+def shortened_tweet_truncator(tweet)
+  if word_substituter(tweet).chars.length > 140  
+    trunc = word_substituter(tweet).chars[0..136].push("...").join("")
+  else 
+    word_substituter(tweet) 
+  end 
+end 
+ 
