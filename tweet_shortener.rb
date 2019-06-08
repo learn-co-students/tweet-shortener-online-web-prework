@@ -16,25 +16,20 @@ def dictionary
 end
 
 def word_substituter(tweet)
-  dict = dictionary
-  tweeted_words = tweet.split(" ")
-  
-   tweeted_words.collect do |tweeted_word|
-     dict.collect do |key, value|
-       if tweeted_word == key
-         tweeted_word.replace(value)
-       end
-      end
+   tweet.split(" ").map do |word|
+      if dictionary.keys.include?(word.downcase)
+        word = dictionary[word.downcase]
+      else
+        word
     end
-    tweeted_words.join(" ")
-  end
+  end.join(" ")
+end
     
-def bulk_tweet_shortener(array_tweet)
-  array_tweet.collect do |tweet|
-    word_substituter(tweet)
+def bulk_tweet_shortener(tweet)
+  tweet.collect do |array_tweet|
+    puts word_substituter(array_tweet)
   end
 end
-
 
 
      
